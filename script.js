@@ -77,7 +77,8 @@ function setupEventListeners() {
         displayColors(initialColors);
         displayRandomColor(initialColors);
         document.getElementById('startButtonContainer').style.display = 'none';
-        document.getElementById('messageDisplay').textContent = '';
+        document.getElementById('title').textContent = 'Guess the color';
+        document.getElementById('title').style.color = '#777';
     });
 }
 

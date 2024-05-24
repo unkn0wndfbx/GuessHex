@@ -132,3 +132,7 @@ h2 {
 #startButtonContainer button:hover {
     background-color: #777;
 }
+
+.background {
+    z-index: 999999999;
+}

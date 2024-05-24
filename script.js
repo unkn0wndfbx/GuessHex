@@ -50,6 +50,7 @@ function checkColorMatch(clickedColor) {
         messageDisplay.style.color = 'green';
 
         startButtonContainer.style.display = 'block';
+        document.getElementById('colors').style.visibility = 'hidden';
 
     } else {
         messageDisplay.textContent = 'Wrong color, try again!';
@@ -79,6 +80,7 @@ function setupEventListeners() {
         document.getElementById('startButtonContainer').style.display = 'none';
         document.getElementById('title').textContent = 'Guess the color';
         document.getElementById('title').style.color = '#777';
+        document.getElementById('colors').style.visibility = 'visible';
     });
 }
 

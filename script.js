@@ -1,3 +1,5 @@
+let currentLevel = 2;
+
 function getRandomColor() {
     const letters = '0123456789ABCDEF';
     let color = '#';
@@ -66,15 +68,15 @@ function checkColorMatch(clickedColor) {
 function setupEventListeners() {
     document.querySelectorAll('.level').forEach(element => {
         element.addEventListener('click', () => {
-            const numColors = parseInt(element.id, 10);
-            const colors = generateRandomColors(numColors);
+            currentLevel = parseInt(element.id, 10);
+            const colors = generateRandomColors(currentLevel);
             displayColors(colors);
             displayRandomColor(colors);
         });
     });
 
     document.getElementById('startButton').addEventListener('click', () => {
-        const initialColors = generateRandomColors(2);
+        const initialColors = generateRandomColors(currentLevel);
         displayColors(initialColors);
         displayRandomColor(initialColors);
         document.getElementById('startButtonContainer').style.display = 'none';
@@ -85,7 +87,7 @@ function setupEventListeners() {
 }
 
 window.onload = () => {
-    const initialColors = generateRandomColors(2);
+    const initialColors = generateRandomColors(currentLevel);
     displayColors(initialColors);
     displayRandomColor(initialColors);
     setupEventListeners();

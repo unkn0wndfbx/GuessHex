@@ -1,0 +1,134 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    min-height: 100vh;
+    overflow: hidden;
+}
+
+h1 {
+    margin-block: 2rem;
+    font-size: 2.5em;
+    font-weight: 800;
+    color: #333;
+}
+
+h2 {
+    font-size: 2rem;
+    margin-block: 2rem 1rem;
+    color: #777;
+}
+
+.difficulty {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.difficulty h3 {
+    font-size: 1.5rem;
+    margin-right: 1rem;
+    color: #777;
+    font-weight: 400;
+}
+
+.difficulty .level {
+    margin-inline: .5rem;
+    text-decoration: none;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #EEE;
+    border-radius: 20px;
+    font-weight: 900;
+    font-size: 1em;
+    cursor: pointer;
+}
+
+.difficulty .level:hover {
+    background-color: #DDD;
+}
+
+.difficulty .level.active {
+    background-color: #333;
+    color: #FFF;
+}
+
+#colors {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 85vw;
+    flex-wrap: wrap;
+    flex: 1;
+}
+
+#colors * {
+    width: 80px;
+    height: 80px;
+    border-radius: 100%;
+    cursor: pointer;
+    margin: 5px;
+    transition: all .1s ease-in-out;
+    border: none;
+    animation: fadeInCard .7s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+    opacity: 0;
+}
+
+@keyframes fadeInCard {
+    from {
+        transform: scale(0.7);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+#colors *:not(.remove-box):hover {
+    border: solid 3px #000;
+}
+
+.remove-box {
+    width: 80px;
+    height: 80px;
+    background: none;
+    border: none;
+}
+
+#startButtonContainer {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    display: none;
+}
+
+#startButtonContainer button {
+    background-color: #333;
+    color: #FFF;
+    border: none;
+    padding: 40px 45px;
+    font-size: 3.5em;
+    font-weight: 800;
+    cursor: pointer;
+    border-radius: 20px;
+}
+#startButtonContainer button:hover {
+    background-color: #777;
+}

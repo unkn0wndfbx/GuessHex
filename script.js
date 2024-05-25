@@ -67,6 +67,7 @@ function checkColorMatch(clickedColor) {
         messageDisplay.style.color = 'green';
 
         startButtonContainer.style.display = 'block';
+        button.style.animation = 'show .15s ease-in-out forwards';
         button.style.backgroundColor = clickedColor;
         let rgb = hexToRgb(clickedColor);
         let luminance = getLuminance(rgb[0], rgb[1], rgb[2]);

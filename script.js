@@ -139,6 +139,8 @@ function setupEventListeners() {
             const colors = generateRandomColors(currentLevel);
             displayColors(colors);
             displayRandomColor(colors);
+            document.getElementById('title').textContent = 'Guess the color';
+            document.getElementById('title').style.color = '#777';
         });
     });
 

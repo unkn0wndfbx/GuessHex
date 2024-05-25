@@ -118,6 +118,7 @@ function setupEventListeners() {
 function levelBackground() {
     document.querySelectorAll('.level').forEach(level => {
         level.style.backgroundColor = '#EEE';
+        level.style.color = "#000";
         level.addEventListener('mouseenter', () => {
             level.style.backgroundColor = '#DDD';
         });
@@ -128,12 +129,15 @@ function levelBackground() {
 }
 
 function levelChooseBackground() {
-    document.getElementById(currentLevel).style.backgroundColor = '#CCC';
+    const color = "#555";
+
+    document.getElementById(currentLevel).style.backgroundColor = color;
+    document.getElementById(currentLevel).style.color = "#FFF";
     document.getElementById(currentLevel).addEventListener('mouseenter', () => {
-        document.getElementById(currentLevel).style.backgroundColor = '#CCC';
+        document.getElementById(currentLevel).style.backgroundColor = color;
     });
     document.getElementById(currentLevel).addEventListener('mouseleave', () => {
-        document.getElementById(currentLevel).style.backgroundColor = '#CCC';
+        document.getElementById(currentLevel).style.backgroundColor = color;
     });
 }
 

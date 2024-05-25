@@ -101,6 +101,7 @@ h2 {
 
 #colors *:not(.remove-box):hover {
     border: solid 3px #000;
+    scale: 1.05;
 }
 
 .remove-box {

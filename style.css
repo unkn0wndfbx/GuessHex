@@ -129,10 +129,3 @@ h2 {
     cursor: pointer;
     border-radius: 20px;
 }
-#startButtonContainer button:hover {
-    background-color: #777;
-}
-
-.background {
-    z-index: 999999999;
-}

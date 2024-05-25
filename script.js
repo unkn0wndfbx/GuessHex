@@ -1,4 +1,7 @@
 let currentLevel = 2;
+let score = 0;
+let oneTry = 0;
+const lastColor = [];
 
 function getRandomColor() {
     const letters = '0123456789ABCDEF';
@@ -54,6 +57,34 @@ function getLuminance(r, g, b) {
     return 0.299 * r + 0.587 * g + 0.114 * b;
 }
 
+function history(clickedColor) {
+    const history = document.getElementById('history');
+    lastColor.push(clickedColor);
+
+    history.innerHTML = '';
+
+    if (lastColor.length > 14) {
+        lastColor.shift();
+    }
+
+    lastColor.forEach(color => {
+        const colorDiv = document.createElement('div');
+        colorDiv.style.backgroundColor = color;
+        colorDiv.textContent = color;
+
+        let rgb = hexToRgb(color);
+        let luminance = getLuminance(rgb[0], rgb[1], rgb[2]);
+        if (luminance > 150) {
+            colorDiv.style.color = 'black';
+        } else {
+            colorDiv.style.color = 'white';
+        }
+
+        history.appendChild(colorDiv);
+        colorDiv.style.animation = 'fadeInSlide .15s ease-in-out forwards';
+    });
+}
+
 function checkColorMatch(clickedColor) {
     const randomColorDisplay = document.getElementById('hexCode');
     const displayedColor = randomColorDisplay.textContent;
@@ -67,11 +98,11 @@ function checkColorMatch(clickedColor) {
         messageDisplay.style.color = 'green';
 
         startButtonContainer.style.display = 'block';
-        button.style.animation = 'show .15s ease-in-out forwards';
+        button.style.animation = 'show .25s ease-in-out forwards';
         button.style.backgroundColor = clickedColor;
         let rgb = hexToRgb(clickedColor);
         let luminance = getLuminance(rgb[0], rgb[1], rgb[2]);
-        if (luminance > 180) {
+        if (luminance > 150) {
             button.style.color = 'black';
         } else {
             button.style.color = 'white';
@@ -79,6 +110,12 @@ function checkColorMatch(clickedColor) {
 
         document.getElementById('colors').style.visibility = 'hidden';
         document.querySelector('.difficulty').style.visibility = 'hidden';
+
+        oneTry++;
+
+        scoreIncrement();
+
+        history(clickedColor);
 
     } else {
         messageDisplay.textContent = 'Wrong color, try again!';
@@ -88,6 +125,8 @@ function checkColorMatch(clickedColor) {
         const removeBox = document.createElement('div');
         removeBox.className = 'remove-box';
         colorsDisplay.replaceChild(removeBox, colorToRemove);
+
+        oneTry = 0;
     }
 }
 
@@ -141,6 +180,17 @@ function levelChooseBackground() {
     });
 }
 
+function scoreIncrement() {
+    score++;
+    if (oneTry >= 20) {
+        document.getElementById("stat").textContent = `🔥🔥Score: ${score}🔥🔥`;
+    } else if (oneTry >= 10) {
+        document.getElementById("stat").textContent = `🔥Score: ${score}🔥`;
+    } else {
+        document.getElementById("stat").textContent = `Score: ${score}`;
+    }
+}
+
 window.onload = () => {
     this.levelBackground();
     this.levelChooseBackground();
@@ -148,4 +198,5 @@ window.onload = () => {
     displayColors(initialColors);
     displayRandomColor(initialColors);
     setupEventListeners();
+    document.getElementById("stat").textContent = `Score: ${score}`;
 };

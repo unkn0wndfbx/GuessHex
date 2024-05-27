@@ -216,7 +216,7 @@ function startCanvasEffect() {
         starAnimationDuration: 1500,
         minimumTimeBetweenStars: 250,
         minimumDistanceBetweenStars: 75,
-        glowDuration: 75,
+        glowDuration: 70,
         maximumGlowPointSpacing: 10,
         sizes: ["1.5rem", "1.1rem", "0.7rem"],
         animations: ["fall-1", "fall-2", "fall-3"]

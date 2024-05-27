@@ -192,7 +192,7 @@ h2 {
 
 .glow-point {
     position: absolute;
-    box-shadow: 0rem 0rem 1.2rem 0.6rem rgb(var(--glow-rgb));
+    box-shadow: 0rem 0rem 1.2rem 0.5rem var(--glow-rgb);
     pointer-events: none;
 }
 

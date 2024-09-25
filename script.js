@@ -1,6 +1,6 @@
 let currentLevel = 2;
 let score = 0;
-let oneTry = 0;
+let streak = 0;
 const lastColor = [];
 
 function getRandomColor() {
@@ -118,10 +118,10 @@ function checkColorMatch(clickedColor) {
         document.getElementById('colors').style.visibility = 'hidden';
         document.querySelector('.difficulty').style.visibility = 'hidden';
 
-        oneTry++;
         score++;
+        streak++;
 
-        scoreIncrement();
+        streakCheck();
 
         history(clickedColor);
 
@@ -134,8 +134,8 @@ function checkColorMatch(clickedColor) {
         removeBox.className = 'remove-box';
         colorsDisplay.replaceChild(removeBox, colorToRemove);
 
-        oneTry = 0;
-        scoreIncrement();
+        streak = 0;
+        streakCheck();
     }
 }
 
@@ -193,14 +193,15 @@ function levelChooseBackground() {
     });
 }
 
-function scoreIncrement() {
-    if (oneTry >= 20) {
-        document.getElementById("stat").textContent = `🔥🔥Score: ${score}🔥🔥`;
-    } else if (oneTry >= 10) {
-        document.getElementById("stat").textContent = `🔥Score: ${score}🔥`;
+function streakCheck() {
+    if (streak >= 20) {
+        document.getElementById("streak").textContent = `🔥🔥In a row: ${streak}🔥🔥`;
+    } else if (streak >= 10) {
+        document.getElementById("streak").textContent = `🔥In a row: ${streak}🔥`;
     } else {
-        document.getElementById("stat").textContent = `Score: ${score}`;
+        document.getElementById("streak").textContent = `In a row: ${streak}`;
     }
+    document.getElementById("stat").textContent = `Colors found: ${score}`;
 }
 
 function startCanvasEffect() {
@@ -356,5 +357,6 @@ window.onload = () => {
     displayColors(initialColors);
     displayRandomColor(initialColors);
     setupEventListeners();
-    document.getElementById("stat").textContent = `Score: ${score}`;
+    document.getElementById("stat").textContent = `Colors found: ${score}`;
+    document.getElementById("streak").textContent = `In a row: ${streak}`;
 };

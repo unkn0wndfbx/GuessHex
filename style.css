@@ -158,7 +158,8 @@ h2 {
     }
 }
 
-#stat {
+#stat,
+#streak{
     position: fixed;
     right: 40px;
     top: 40px;
@@ -166,6 +167,12 @@ h2 {
     font-weight: 600;
     font-size: 1.5em;
     text-align: right;
+}
+
+#streak {
+    top: 80px;
+    color: #444;
+    font-weight: 800;
 }
 
 #history {
